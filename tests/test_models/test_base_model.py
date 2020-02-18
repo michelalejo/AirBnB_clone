@@ -21,7 +21,6 @@ class Testpep8(unittest.TestCase):
 
     def id_unique(self):
         """"Id testing"""
-
         id_u = self._cls()
         with self.subTest(msg='id is a UUID'):
             self.assertIsInstance(id_u.id, str)
