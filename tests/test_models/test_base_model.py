@@ -11,6 +11,7 @@ import unittest
 
 class Testpep8(unittest.TestCase):
     """Pep8 testing"""
+
     def test_pep8(self):
         msg = "Found code style errors (and warning)."
         style = pep8.StyleGuide(quiet=True)
