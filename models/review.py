@@ -4,14 +4,13 @@ from models.base_model import BaseModel
 from models.place import Place
 from models.user import User
 
-text = ""
-user_id = User.id
-place_id = Place.id
-
 
 class Review(BaseModel):
     """ Review class """
+    text = ""
+    user_id = ""
+    place_id = ""
 
     def __init__(self, *args, **kwargs):
-        """ Init """
+        """ Constructor """
         super().__init__(*args, **kwargs)

@@ -3,13 +3,12 @@
 from models.base_model import BaseModel
 from models.state import State
 
-state_id = State.id
-name = ""
-
 
 class City(BaseModel):
     """ City class """
+    state_id = ""
+    name = ""
 
     def __init__(self, *args, **kwargs):
-        """ Init """
+        """ Constructor """
         super().__init__(*args, **kwargs)
