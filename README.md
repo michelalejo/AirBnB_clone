@@ -18,11 +18,11 @@ When you run the./console.py console on a terminal, A prompt (hbnb) will apear o
 This **AirBnb clone** works like this:
 
 On **non-interactive mode**:
-![non-interactive mode](https://doc-0o-c0-docs.googleusercontent.com/docs/securesc/bbrmrugean7au5gt9hu1soso3tqoqgkd/5k049eil7hk7truo62a8ntm9k0llap7k/1582153200000/08316660820667420597/08316660820667420597/1hJYO8qfW1F8-umzgGY7uVMOzbreonla2?e=download&h=12741078595415434456&authuser=3&nonce=nu94cv7q38lc0&user=08316660820667420597&hash=n5jm8g5hutcs6hkc45dl0756q23vk87t)
+![non-interactive mode](https://user-images.githubusercontent.com/55112483/74885416-7a6b7b80-5343-11ea-91c4-0a57799f71c1.png)
 
 
 On **interactive mode**:
-![interactive mode](https://drive.google.com/file/d/1kp5UcV7TLDMzwgerYYMV5ejRRopZ6_l9/view?usp=sharing)
+![interactive mode](https://user-images.githubusercontent.com/55112483/74885336-4beda080-5343-11ea-9fdf-98763ecbc0a1.png)
 
 
 # FILES
