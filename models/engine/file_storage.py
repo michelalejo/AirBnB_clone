@@ -2,6 +2,7 @@
 """ Store first object """
 import json
 from models.base_model import BaseModel
+from os import path
 
 
 class FileStorage:
@@ -26,7 +27,7 @@ class FileStorage:
         """serializes __objects to the JSON file (path: __file_path)"""
         for key, value in FileStorage.__objects.items():
             dict.update({key: value.to_dict()})
-            json_file = json.dumps(dict)
+        json_file = json.dumps(dict)
         with open(FileStorage.__file_path, "w") as my_file:
             my_file.write(json_file)
 
@@ -35,12 +36,8 @@ class FileStorage:
         (only if the JSON file (__file_path) exists ;
         otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)"""
-        file = ""
-        try:
-            with open(FileStorage.__file_path, "r") as f:
-                file = json.loads(f.read())
-                for key, value in file.items():
-                    file.update({key: BaseModel(**value)})
-                FileStorage.__objects = file
-        except Exception:
-            pass
+        if path.isfile(self.__file_path):
+            with open(self.__file_path, 'r', encoding="utf-8") as f:
+                for key, value in json.load(f).items():
+                    new = eval(value["__class__"])(**value)
+                    self.__objects[key] = new
