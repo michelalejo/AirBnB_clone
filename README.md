@@ -1,6 +1,6 @@
 #  NAME
 
-**AirBnB clone**, Our own version of a Airbnb.
+**AirBnB clone** is our own version of a Airbnb.
 
 
 # SYNOPSIS
