@@ -1,4 +1,4 @@
-BB#  NAME
+#  NAME
 
 **AirBnB clone** is our own version of a Airbnb.
 
@@ -18,7 +18,7 @@ When you run the./console.py console on a terminal, A prompt (hbnb) will apear o
 This **AirBnb clone** works like this:
 
 On **non-interactive mode**:
-![non-interactive mode](https://drive.google.com/file/d/1hJYO8qfW1F8-umzgGY7uVMOzbreonla2/view?usp=sharing)
+![non-interactive mode](https://doc-0o-c0-docs.googleusercontent.com/docs/securesc/bbrmrugean7au5gt9hu1soso3tqoqgkd/5k049eil7hk7truo62a8ntm9k0llap7k/1582153200000/08316660820667420597/08316660820667420597/1hJYO8qfW1F8-umzgGY7uVMOzbreonla2?e=download&h=12741078595415434456&authuser=3&nonce=nu94cv7q38lc0&user=08316660820667420597&hash=n5jm8g5hutcs6hkc45dl0756q23vk87t)
 
 
 On **interactive mode**:
