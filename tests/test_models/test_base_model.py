@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """Tests for Base Model"""
 
-
-from models.base_model import BaseModel
 import unittest
 import json
 import pep8
-import unittest
 from os import path
+from models.base_model import BaseModel
 
 
 class Testpep8(unittest.TestCase):
@@ -49,6 +47,12 @@ class TestBase(unittest.TestCase):
         self.assertEqual(self.my_model.my_number, 55)
         """Test model exist"""
         self.assertTrue(path.isfile('my_file.json'))
+        """Test model to dict"""
+        model = self.my_model.to_dict()
+        self.assertIsInstance(model["created_at"], str)
+        self.assertIsInstance(model["updated_at"], str)
+        self.assertIsInstance(model["my_number"], int)
+        self.assertIsInstance(model["id"], str)
 
 
 if __name__ == '__main__':

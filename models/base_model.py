@@ -17,11 +17,11 @@ class BaseModel:
                 if key == "id":
                     self.id = kwargs.get(key)
                 if key == "created_at":
-                    self.created_at = datetime.strptime(
-                        kwargs.get(key), '%Y-%m-%dT%H:%M:%S.%f')
+                    self.created_at = datetime.strptime(kwargs.get(key),
+                                                        '%Y-%m-%dT%H:%M:%S.%f')
                 if key == "updated_at":
-                    self.updated_at = datetime.strptime(
-                        kwargs.get(key), '%Y-%m-%dT%H:%M:%S.%f')
+                    self.updated_at = datetime.strptime(kwargs.get(key),
+                                                        '%Y-%m-%dT%H:%M:%S.%f')
                 if key == "my_number":
                     self.my_number = kwargs.get(key)
                 if key == "name":
@@ -34,7 +34,6 @@ class BaseModel:
 
     def __str__(self):
         """ should print: [<class name>] (<self.id>) <self.__dict__> """
-
         return ("[{}] ({}) {}".format(self.__class__.__name__, self.id,
                                       self.__dict__))
 
@@ -47,8 +46,7 @@ class BaseModel:
     def to_dict(self):
         """ returns a dictionary containing
         all keys/values of __dict__ of the instance """
-
-        dict = self.__dict__
+        dict = self.__dict__.copy()
         dict['created_at'] = self.created_at.isoformat()
         dict['updated_at'] = self.updated_at.isoformat()
         dict['__class__'] = self.__class__.__name__
