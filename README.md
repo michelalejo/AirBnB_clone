@@ -1,4 +1,4 @@
-#  NAME
+B#  NAME
 
 **AirBnB clone** is our own version of a Airbnb.
 
@@ -16,29 +16,11 @@ When you run the./console.py console on a terminal, A prompt (hbnb) will apear o
 # EXAMPLE
 
 This **AirBnb clone** works like this:
-On **non-interactive mode:**
-$ echo "help" | ./console.py
-(hbnb)
-
-Documented commands (type help <topic>):
-'========================================'
-EOF  help  quit
-(hbnb) 
-$
+![enter image description here](https://drive.google.com/file/d/1hJYO8qfW1F8-umzgGY7uVMOzbreonla2/view?usp=sharing)
 
 
 On **interactive mode:**
-$ ./console.py
-(hbnb) help
-
-Documented commands (type help <topic>):
-'========================================'
-EOF  help  quit
-
-(hbnb) 
-(hbnb) 
-(hbnb) quit
-$
+![enter image description here](https://drive.google.com/file/d/1kp5UcV7TLDMzwgerYYMV5ejRRopZ6_l9/view?usp=sharing)
 
 
 # FILES
