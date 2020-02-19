@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import cmd
-import sys
 from models import storage
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
@@ -11,6 +10,8 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     """console"""
     prompt = '(hbnb) '
+    my_class = ['BaseModel', 'User', 'Place', 'Review',
+                'Amenity', 'State', 'City']
 
     def do_EOF(self, line):
         'exit'
