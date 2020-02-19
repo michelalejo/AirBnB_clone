@@ -51,6 +51,26 @@ class HBNBCommand(cmd.Cmd):
                 my_list.append(str(values))
             print(my_list)
 
+    def do_show(self, arg):
+        'Show command to show an existing instance.'
+        my_arg = arg.split(" ")
+        if len(my_arg) == 0:
+            print("** class name missing **")
+        elif len(my_arg) == 1:
+            print("** instance id missing **")
+        elif my_arg[0] not in self.my_class:
+            print("** class doesn't exist **")
+        elif len(my_arg) >= 2:
+            my_objects = FileStorage.all(self)
+            my_key = my_arg[0] + "." + my_arg[1]
+            isFound = 0
+            for key, values in my_objects.items():
+                if key == my_key:
+                    isFound = 1
+                    print(values)
+            if isFound == 0:
+                print("** no instance found **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
