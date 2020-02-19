@@ -36,6 +36,21 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def do_all(self, arg):
+        'Prints all string representation of all instances based'
+        'or not on the class name.'
+        my_arg = arg.split(" ")
+        if len(my_arg) == 0:
+            print("** class name missing **")
+        elif my_arg[0] not in self.my_class:
+            print("** class doesn't exist **")
+        else:
+            my_list = []
+            my_objects = FileStorage.all(self)
+            for key, values in my_objects.items():
+                my_list.append(str(values))
+            print(my_list)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
