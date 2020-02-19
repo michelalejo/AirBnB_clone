@@ -17,11 +17,11 @@ When you run the./console.py console on a terminal, A prompt (hbnb) will apear o
 
 This **AirBnb clone** works like this:
 
-On **non-interactive mode**:
+On **non-interactive mode:**
 ![non-interactive mode](https://user-images.githubusercontent.com/55112483/74885416-7a6b7b80-5343-11ea-91c4-0a57799f71c1.png)
 
 
-On **interactive mode**:
+On **interactive mode:**
 ![interactive mode](https://user-images.githubusercontent.com/55112483/74885336-4beda080-5343-11ea-9fdf-98763ecbc0a1.png)
 
 
