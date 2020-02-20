@@ -184,6 +184,23 @@ class HBNBCommand(cmd.Cmd):
                 params = the_class + " " + args2
                 HBNBCommand.do_show(HBNBCommand, params)
 
+    def do_City(self, arg):
+        'retrieve all instances of a class by using'
+        the_class = "City"
+        args = arg.split(".")
+        if args[1] == 'all()':
+            HBNBCommand.do_all(HBNBCommand, the_class)
+        elif args[1] == 'count()':
+            HBNBCommand.do_count(HBNBCommand, the_class)
+        else:
+            first = args[1].find('("')
+            second = args[1].find('")')
+            args1 = args[1][0:first]
+            args2 = args[1][first + 2: second]
+            if args1 == "show":
+                params = the_class + " " + args2
+                HBNBCommand.do_show(HBNBCommand, params)
+
     def do_count(self, arg):
         'retrieve the number of instances of a class'
         count = 0
