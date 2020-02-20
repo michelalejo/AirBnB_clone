@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import cmd
+import shlex
 from models.engine.file_storage import FileStorage
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -105,6 +106,32 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
             except KeyError:
                 print("** no instance found **")
+
+    def do_update(self, arg):
+        ''
+        args = shlex.split(arg)
+        if len(arg) == 0:
+            print("** class name missing **")
+        elif len(arg) == 1:
+            print("** instance id missing **")
+        elif len(arg) == 2:
+            print("** attribute name missing **")
+        elif len(arg) == 3:
+            print("** value missing **")
+        elif args[0] not in my_class:
+            print("** class doesn't exist **")
+        else:
+            my_objects = FileStorage.all(self)
+            myKei = args[0] + "." + args[1]
+            isFound = 0
+            for key, value in my_objects.items():
+                if key == myKei:
+                    isFound = 1
+                    Values = my_objects.get(key)
+                    setattr(value, args[2], args[3])
+                    value.save()
+        if isFound == 0:
+            print("** no instance found **")
 
 
 if __name__ == '__main__':
