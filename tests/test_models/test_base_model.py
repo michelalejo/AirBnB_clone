@@ -54,6 +54,15 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(model["my_number"], int)
         self.assertIsInstance(model["id"], str)
 
+    def test_permissions(self):
+        """Test BaseModel Permissions"""
+
+        test_file = os.access("models/base_model.py", os.R_OK)
+        self.assertTrue(test_file, "Read permissions")
+        test_file = os.access("models/base_model.py", os.W_OK)
+        self.assertTrue(test_file, "Write Permissions")
+        test_file = os.access("models/base_model.py", os.X_OK)
+        self.assertTrue(test_file, "Execute permissions")
 
 if __name__ == '__main__':
     unittest.main()
