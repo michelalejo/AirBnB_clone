@@ -40,9 +40,9 @@ class HBNBCommand(cmd.Cmd):
         elif arg in my_class:
             for key, value in my_class.items():
                 if key == arg:
-                    new_class = my_class[key]()
+                    instance = my_class[key]()
             storage.save()
-            print(new_class.id)
+            print(instance.id)
         else:
             print("** class doesn't exist **")
 
@@ -61,8 +61,8 @@ class HBNBCommand(cmd.Cmd):
             List = []
             my_objects = FileStorage.all(self)
             for key, values in my_objects.items():
-                my_key = key.split(".")
-                if my_key[0] == args[0]:
+                Key = key.split(".")
+                if Key[0] == args[0]:
                     List.append(str(values))
             print(List)
 
@@ -76,10 +76,10 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) >= 1:
             try:
                 my_objects = FileStorage.all(self)
-                my_key = args[0] + "." + args[1]
+                Key = args[0] + "." + args[1]
                 isFound = 0
                 for key, values in my_objects.items():
-                    if key == my_key:
+                    if key == Key:
                         isFound = 1
                         print(values)
                 if isFound == 0:
@@ -97,9 +97,9 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) >= 1:
             try:
                 my_objects = FileStorage.all(self)
-                my_key = args[0] + "." + args[1]
+                Key = args[0] + "." + args[1]
                 try:
-                    my_objects.pop(my_key)
+                    my_objects.pop(Key)
                     storage.save()
                 except KeyError:
                     print("** no instance found **")
@@ -110,28 +110,28 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id by adding
         or updating attribute (save the change into the JSON file)."""
         args = shlex.split(arg)
-        if len(arg) == 0:
+        if len(args) == 0:
             print("** class name missing **")
-        elif len(arg) == 1:
+        elif len(args) == 1:
             print("** instance id missing **")
-        elif len(arg) == 2:
+        elif len(args) == 2:
             print("** attribute name missing **")
-        elif len(arg) == 3:
+        elif len(args) == 3:
             print("** value missing **")
         elif args[0] not in my_class:
             print("** class doesn't exist **")
         else:
             my_objects = FileStorage.all(self)
-            myKei = args[0] + "." + args[1]
+            Key = args[0] + "." + args[1]
             isFound = 0
-            for key, value in my_objects.items():
-                if key == myKei:
+            for key, values in my_objects.items():
+                if key == Key:
                     isFound = 1
-                    Values = my_objects.get(key)
-                    setattr(value, args[2], args[3])
-                    value.save()
-        if isFound == 0:
-            print("** no instance found **")
+                    my_values = my_objects.get(key)
+                    setattr(values, args[2], args[3])
+                    values.save()
+            if isFound == 0:
+                print("** no instance found **")
 
     def do_User(self, arg):
         'Send command based on class User'
@@ -153,20 +153,20 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, arg):
         'Count all instances based on class name.'
         count = 0
-        my_arg = arg.split(" ")
+        args = arg.split(" ")
         if not arg:
             my_objects = FileStorage.all(self)
             for key, values in my_objects.items():
                 List.append(str(values))
             print(List)
-        elif my_arg[0] not in my_class:
+        elif args[0] not in my_class:
             print("** class doesn't exist **")
         else:
             List = []
             my_objects = FileStorage.all(self)
             for key, values in my_objects.items():
-                my_key = key.split(".")
-                if my_key[0] == my_arg[0]:
+                Key = key.split(".")
+                if Key[0] == args[0]:
                     count += 1
             print(count)
 
