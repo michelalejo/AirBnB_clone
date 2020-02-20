@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_User(self, arg):
-        'Send command based on class User'
+        'retrieve all instances of a class by using'
         the_class = "User"
         args = arg.split(".")
         if args[1] == 'all()':
@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
                 HBNBCommand.do_show(HBNBCommand, params)
 
     def do_count(self, arg):
-        'Count all instances based on class name.'
+        'retrieve the number of instances of a class'
         count = 0
         args = arg.split(" ")
         if not arg:
