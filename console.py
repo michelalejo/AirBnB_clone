@@ -47,37 +47,36 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_all(self, arg):
-        'Prints all string representation of all instances based'
-        'or not on the class name.'
-        my_arg = arg.split(" ")
+        'Show all instances based on class name.'
+        args = arg.split(" ")
         if not arg:
-            my_list = []
+            List = []
             my_objects = FileStorage.all(self)
             for key, values in my_objects.items():
-                my_list.append(str(values))
-            print(my_list)
-        elif my_arg[0] not in my_class:
+                List.append(str(values))
+            print(List)
+        elif args[0] not in my_class:
             print("** class doesn't exist **")
         else:
-            my_list = []
+            List = []
             my_objects = FileStorage.all(self)
             for key, values in my_objects.items():
-                myKey = key.split(".")
-                if myKey[0] == arg[0]:
-                    my_list.append(str(values))
-            print(my_list)
+                my_key = key.split(".")
+                if my_key[0] == args[0]:
+                    List.append(str(values))
+            print(List)
 
     def do_show(self, arg):
         'Show command to show an existing instance.'
-        my_arg = arg.split(" ")
+        args = arg.split(" ")
         if not arg:
             print("** class name missing **")
-        elif my_arg[0] not in my_class:
+        elif args[0] not in my_class:
             print("** class doesn't exist **")
-        elif len(my_arg) >= 1:
+        elif len(args) >= 1:
             try:
                 my_objects = FileStorage.all(self)
-                my_key = my_arg[0] + "." + my_arg[1]
+                my_key = args[0] + "." + args[1]
                 isFound = 0
                 for key, values in my_objects.items():
                     if key == my_key:
@@ -90,15 +89,15 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         'Deletes an instance based on the class name and id'
-        my_arg = arg.split(" ")
+        args = arg.split(" ")
         if not arg:
             print("** class name missing **")
-        elif my_arg[0] not in my_class:
+        elif args[0] not in my_class:
             print("** class doesn't exist **")
-        elif len(my_arg) >= 1:
+        elif len(args) >= 1:
             try:
                 my_objects = FileStorage.all(self)
-                my_key = my_arg[0] + "." + my_arg[1]
+                my_key = args[0] + "." + args[1]
                 try:
                     my_objects.pop(my_key)
                     storage.save()
@@ -133,6 +132,13 @@ class HBNBCommand(cmd.Cmd):
                     value.save()
         if isFound == 0:
             print("** no instance found **")
+
+    def do_User(self, arg):
+        'Send command based on class User'
+        the_class = "User"
+        args = arg.split(".")
+        if args[1] == 'all()':
+            HBNBCommand.do_all(HBNBCommand, the_class)
 
 
 if __name__ == '__main__':
