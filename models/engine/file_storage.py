@@ -1,9 +1,13 @@
 #!usr/bin/python3
 """ Store first object """
 import json
-from models.base_model import BaseModel
-from os import path
-
+from ..base_model import BaseModel
+from ..amenity import Amenity
+from ..city import City
+from ..user import User
+from ..place import Place
+from ..review import Review
+from ..state import State
 
 class FileStorage:
     __file_path = 'file.json'
@@ -32,8 +36,13 @@ class FileStorage:
         (only if the JSON file (__file_path) exists ;
         otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)"""
-        if path.isfile(self.__file_path):
-            with open(self.__file_path, 'r', encoding="utf-8") as f:
-                for key, value in json.load(f).items():
-                    new = eval(value["__class__"])(**value)
-                    self.__objects[key] = new
+        my_class = {"BaseModel": BaseModel, "User": User, "Place": Place, 'Review': Review,
+            'Amenity': Amenity, 'State': State, 'City': City}
+        jsonFile = ""
+        try:
+            with open(FileStorage.__file_path, "r") as f:
+                jsonFile = json.loads(f.read())
+                for key in jsonFile:
+                    FileStorage.__objects[key] = my_class[jsonFile[key]['__class___']](**jsonFile[key])
+        except:
+            pass

@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         'Empty line'
-        return ""
+        pass
 
     def do_create(self, arg):
         'Create command to create a new instance'
@@ -50,15 +50,21 @@ class HBNBCommand(cmd.Cmd):
         'Prints all string representation of all instances based'
         'or not on the class name.'
         my_arg = arg.split(" ")
-        if len(my_arg) == 0:
-            print("** class name missing **")
+        if not arg:
+            my_list = []
+            my_objects = FileStorage.all(self)
+            for key, values in my_objects.items():
+                my_list.append(str(values))
+            print(my_list)
         elif my_arg[0] not in my_class:
             print("** class doesn't exist **")
         else:
             my_list = []
             my_objects = FileStorage.all(self)
             for key, values in my_objects.items():
-                my_list.append(str(values))
+                myKey = key.split(".")
+                if myKey[0] == arg[0]:
+                    my_list.append(str(values))
             print(my_list)
 
     def do_show(self, arg):
@@ -89,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif len(my_arg) == 1:
             print("** instance id missing **")
-        elif my_arg[0] not in self.my_class:
+        elif my_arg[0] not in my_class:
             print("** class doesn't exist **")
         elif len(my_arg) >= 2:
             my_objects = FileStorage.all(self)
