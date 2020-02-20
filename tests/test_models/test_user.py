@@ -27,7 +27,7 @@ class TestUser (TestBase):
         self.assertTrue(is_exec_true)
 
 
-    def test_is_an_instance(self):
+    def test_instance(self):
         """User tests"""
         my_user = User()
         self.assertIsInstance(my_user, User)
