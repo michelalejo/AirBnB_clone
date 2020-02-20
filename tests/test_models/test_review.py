@@ -1,33 +1,33 @@
 #!/usr/bin/python3
-"""User tests"""
+"""Review tests"""
 
 
-from models.user import User
+from models.review import Review
 from tests.test_models.test_base_model import TestBase
 import os
 import unittest
 
-class TestUser (TestBase):
-    """User tests"""
+class TestReview (TestBase):
+    """Review tests"""
 
     def __init__(self, *args, **kwargs):
-        """User tests"""
+        """Review tests"""
 
         super().__init__(*args, **kwargs)
-        self._cls = User
-        self._name = 'User'
+        self._cls = Review
+        self._name = 'Review'
 
     def test_permissions(self):
-        """User tests"""
-        is_read_true = os.access('models/user.py', os.R_OK)
+        """Review tests"""
+        is_read_true = os.access('models/review.py', os.R_OK)
         self.assertTrue(is_read_true)
-        is_write_true = os.access('models/user.py', os.W_OK)
+        is_write_true = os.access('models/review.py', os.W_OK)
         self.assertTrue(is_write_true)
-        is_exec_true = os.access('models/user.py', os.X_OK)
+        is_exec_true = os.access('models/review.py', os.X_OK)
         self.assertTrue(is_exec_true)
 
 
     def test_instance(self):
-        """User tests"""
-        my_user = User()
-        self.assertIsInstance(my_user, User)
+        """Review tests"""
+        my_review = Review()
+        self.assertIsInstance(my_review, Review)
