@@ -142,13 +142,13 @@ class HBNBCommand(cmd.Cmd):
         elif args[1] == 'count()':
             HBNBCommand.do_count(HBNBCommand, the_class)
         else:
-            prim = args[1].find('("')
-            seco = args[1].find('")')
-            args1 = args[1][0:prim]
-            args2 = args[1][prim + 2: seco]
+            first = args[1].find('("')
+            second = args[1].find('")')
+            args1 = args[1][0:first]
+            args2 = args[1][first + 2: second]
             if args1 == "show":
-                param = the_class + " " + args2
-                HBNBCommand.do_show(HBNBCommand, param)
+                params = the_class + " " + args2
+                HBNBCommand.do_show(HBNBCommand, params)
 
     def do_count(self, arg):
         'Count all instances based on class name.'
