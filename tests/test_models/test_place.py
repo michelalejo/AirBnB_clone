@@ -7,6 +7,7 @@ from tests.test_models.test_base_model import TestBase
 import os
 import unittest
 
+
 class TestPlace (TestBase):
     """Place tests"""
 
@@ -25,7 +26,6 @@ class TestPlace (TestBase):
         self.assertTrue(is_write_true)
         is_exec_true = os.access('models/place.py', os.X_OK)
         self.assertTrue(is_exec_true)
-
 
     def test_instance(self):
         """Place tests"""

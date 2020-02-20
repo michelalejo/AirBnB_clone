@@ -6,6 +6,7 @@ from tests.test_models.test_base_model import TestBase
 import os
 import unittest
 
+
 class TestState (TestBase):
     """State tests"""
 

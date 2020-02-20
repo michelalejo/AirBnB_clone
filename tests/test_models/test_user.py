@@ -7,7 +7,8 @@ from tests.test_models.test_base_model import TestBase
 import os
 import unittest
 
-class TestUser (TestBase):
+
+class TestUser(TestBase):
     """User tests"""
 
     def __init__(self, *args, **kwargs):
@@ -25,7 +26,6 @@ class TestUser (TestBase):
         self.assertTrue(is_write_true)
         is_exec_true = os.access('models/user.py', os.X_OK)
         self.assertTrue(is_exec_true)
-
 
     def test_instance(self):
         """User tests"""
