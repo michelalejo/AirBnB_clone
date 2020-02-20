@@ -4,7 +4,8 @@
 
 from models.user import User
 from tests.test_models.test_base_model import TestBase
-
+import os
+import unittest
 
 class TestUser (TestBase):
     """User tests"""
@@ -15,6 +16,16 @@ class TestUser (TestBase):
         super().__init__(*args, **kwargs)
         self._cls = User
         self._name = 'User'
+
+    def test_permissions(self):
+        """User tests"""
+        is_read_true = os.access('models/user.py', os.R_OK)
+        self.assertTrue(is_read_true)
+        is_write_true = os.access('models/user.py', os.W_OK)
+        self.assertTrue(is_write_true)
+        is_exec_true = os.access('models/user.py', os.X_OK)
+        self.assertTrue(is_exec_true)
+
 
     def test_is_an_instance(self):
         """User tests"""
