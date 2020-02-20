@@ -9,6 +9,7 @@ from ..place import Place
 from ..review import Review
 from ..state import State
 
+
 class FileStorage:
     __file_path = 'file.json'
     __objects = {}
@@ -36,13 +37,16 @@ class FileStorage:
         (only if the JSON file (__file_path) exists ;
         otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)"""
-        my_class = {"BaseModel": BaseModel, "User": User, "Place": Place, 'Review': Review,
-            'Amenity': Amenity, 'State': State, 'City': City}
+        dict = {"BaseModel": BaseModel, "User": User, "Place": Place,
+                'Review': Review, 'Amenity': Amenity, 'State': State,
+                'City': City}
         jsonFile = ""
         try:
             with open(FileStorage.__file_path, "r") as f:
                 jsonFile = json.loads(f.read())
                 for key in jsonFile:
-                    FileStorage.__objects[key] = my_class[jsonFile[key]['__class___']](**jsonFile[key])
+                    FileStorage.__objects[key] = dict[jsonFile[key]['__\
+                        class___']](
+                        **jsonFile[key])
         except:
             pass

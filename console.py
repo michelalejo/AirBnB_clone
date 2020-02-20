@@ -11,8 +11,8 @@ from models.state import State
 from models import storage
 
 """console"""
-my_class = {"BaseModel": BaseModel, "User": User, "Place": Place, 'Review': Review,
-            'Amenity': Amenity, 'State': State, 'City': City}
+my_class = {"BaseModel": BaseModel, "User": User, "Place": Place,
+            'Review': Review, 'Amenity': Amenity, 'State': State, 'City': City}
 
 instance = {}
 
