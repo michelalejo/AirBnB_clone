@@ -1,17 +1,25 @@
 #!/usr/bin/python3
 import cmd
-from models import storage
 from models.engine.file_storage import FileStorage
+from models.amenity import Amenity
 from models.base_model import BaseModel
+from models.city import City
+from models.user import User
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models import storage
 
 """console"""
+my_class = {"BaseModel": BaseModel, "User": User, "Place": Place, 'Review': Review,
+            'Amenity': Amenity, 'State': State, 'City': City}
+
+instance = {}
 
 
 class HBNBCommand(cmd.Cmd):
     """console"""
     prompt = '(hbnb) '
-    my_class = ['BaseModel', 'User', 'Place', 'Review',
-                'Amenity', 'State', 'City']
 
     def do_EOF(self, line):
         'exit'
@@ -29,10 +37,12 @@ class HBNBCommand(cmd.Cmd):
         'Create command to create a new instance'
         if not arg:
             print("** class name missing **")
-        elif arg in self.my_class:
-            obj = BaseModel()
+        elif arg in my_class:
+            for key, value in my_class.items():
+                if key == arg:
+                    new_class = my_class[key]()
             storage.save()
-            print(obj.id)
+            print(new_class.id)
         else:
             print("** class doesn't exist **")
 
@@ -42,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
         my_arg = arg.split(" ")
         if len(my_arg) == 0:
             print("** class name missing **")
-        elif my_arg[0] not in self.my_class:
+        elif my_arg[0] not in my_class:
             print("** class doesn't exist **")
         else:
             my_list = []
@@ -56,20 +66,21 @@ class HBNBCommand(cmd.Cmd):
         my_arg = arg.split(" ")
         if len(my_arg) == 0:
             print("** class name missing **")
-        elif len(my_arg) == 1:
-            print("** instance id missing **")
-        elif my_arg[0] not in self.my_class:
+        elif my_arg[0] not in my_class:
             print("** class doesn't exist **")
-        elif len(my_arg) >= 2:
-            my_objects = FileStorage.all(self)
-            my_key = my_arg[0] + "." + my_arg[1]
-            isFound = 0
-            for key, values in my_objects.items():
-                if key == my_key:
-                    isFound = 1
-                    print(values)
-            if isFound == 0:
-                print("** no instance found **")
+        elif len(my_arg) >= 1:
+            try:
+                my_objects = FileStorage.all(self)
+                my_key = my_arg[0] + "." + my_arg[1]
+                isFound = 0
+                for key, values in my_objects.items():
+                    if key == my_key:
+                        isFound = 1
+                        print(values)
+                if isFound == 0:
+                    print("** no instance found **")
+            except IndexError:
+                print("** instance id missing **")
 
     def do_destroy(self, arg):
         'Deletes an instance based on the class name and id'

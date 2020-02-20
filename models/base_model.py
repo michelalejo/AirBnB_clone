@@ -12,20 +12,17 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Init of the base class"""
-        if len(kwargs) is not 0:
+        if kwargs:
             for key, value in kwargs.items():
+                dic = {}
+                dic[key] = value
                 if key == "id":
-                    self.id = kwargs.get(key)
+                    self.id = value
                 if key == "created_at":
-                    self.created_at = datetime.strptime(kwargs.get(key),
-                                                        '%Y-%m-%dT%H:%M:%S.%f')
+                    self.created_at = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 if key == "updated_at":
-                    self.updated_at = datetime.strptime(kwargs.get(key),
-                                                        '%Y-%m-%dT%H:%M:%S.%f')
-                if key == "my_number":
-                    self.my_number = kwargs.get(key)
-                if key == "name":
-                    self.name = kwargs.get(key)
+                    self.updated_at = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                    
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
