@@ -2,32 +2,32 @@
 """User tests"""
 
 
-from models.user import User
+from models.city import City
 from tests.test_models.test_base_model import TestBase
 import os
 import unittest
 
-class TestUser (TestBase):
-    """User tests"""
+class TestCity (TestBase):
+    """City tests"""
 
     def __init__(self, *args, **kwargs):
-        """User tests"""
+        """City tests"""
 
         super().__init__(*args, **kwargs)
-        self._cls = User
-        self._name = 'User'
+        self._cls = City
+        self._name = 'City'
 
     def test_permissions(self):
-        """User tests"""
-        is_read_true = os.access('models/user.py', os.R_OK)
+        """City tests"""
+        is_read_true = os.access('models/city.py', os.R_OK)
         self.assertTrue(is_read_true)
-        is_write_true = os.access('models/user.py', os.W_OK)
+        is_write_true = os.access('models/city.py', os.W_OK)
         self.assertTrue(is_write_true)
-        is_exec_true = os.access('models/user.py', os.X_OK)
+        is_exec_true = os.access('models/city.py', os.X_OK)
         self.assertTrue(is_exec_true)
 
 
     def test_instance(self):
-        """User tests"""
-        my_user = User()
-        self.assertIsInstance(my_user, User)
+        """City tests"""
+        my_city = City()
+        self.assertIsInstance(my_city, City)
