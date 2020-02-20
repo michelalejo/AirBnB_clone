@@ -2,7 +2,7 @@
 """User tests"""
 
 
-from models.file_storage import City
+from models.engine.file_storage import FileStorage
 from tests.test_models.test_base_model import TestBase
 import os
 import unittest
@@ -20,12 +20,12 @@ class Testcity(TestBase):
 
     def test_FileStorage(self):
         """FileStorage tests"""
-        is_read_true = os.access('models/engine/file_storage.py', os.R_OK)
-        self.assertTrue(is_read_true)
-        is_write_true = os.access('models/engine/file_storage.py', os.W_OK)
-        self.assertTrue(is_write_true)
-        is_exec_true = os.access('models/engine/file_storage.py', os.X_OK)
-        self.assertTrue(is_exec_true)
+        test_file = os.access("models/engine/file_storage.py", os.R_OK)
+        self.assertTrue(test_file, "Read permissions")
+        test_file = os.access("models/engine/file_storage.py", os.W_OK)
+        self.assertTrue(test_file, "Write Permissions")
+        test_file = os.access("models/engine/file_storage.py", os.X_OK)
+        self.assertTrue(test_file, "Execute permissions")
 
     def test_instance(self):
         """FileStorage tests"""
