@@ -139,6 +139,28 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split(".")
         if args[1] == 'all()':
             HBNBCommand.do_all(HBNBCommand, the_class)
+        if args[1] == 'count()':
+            HBNBCommand.do_count(HBNBCommand, the_class)
+
+    def do_count(self, arg):
+        'Count all instances based on class name.'
+        count = 0
+        my_arg = arg.split(" ")
+        if not arg:
+            my_objects = FileStorage.all(self)
+            for key, values in my_objects.items():
+                List.append(str(values))
+            print(List)
+        elif my_arg[0] not in my_class:
+            print("** class doesn't exist **")
+        else:
+            List = []
+            my_objects = FileStorage.all(self)
+            for key, values in my_objects.items():
+                my_key = key.split(".")
+                if my_key[0] == my_arg[0]:
+                    count += 1
+            print(count)
 
 
 if __name__ == '__main__':
