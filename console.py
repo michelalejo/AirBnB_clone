@@ -22,16 +22,15 @@ class HBNBCommand(cmd.Cmd):
     """console"""
     prompt = '(hbnb) '
 
-    def do_EOF(self, line):
+    def do_EOF(self, arg):
         'exit'
         return True
 
-    def do_quit(self, line):
+    def do_quit(self, arg):
         'exit whit command quit'
         return True
 
     def emptyline(self):
-        'Empty line'
         pass
 
     def do_create(self, arg):
@@ -71,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         'Show command to show an existing instance.'
         my_arg = arg.split(" ")
-        if len(my_arg) == 0:
+        if not arg:
             print("** class name missing **")
         elif my_arg[0] not in my_class:
             print("** class doesn't exist **")
@@ -92,23 +91,25 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         'Deletes an instance based on the class name and id'
         my_arg = arg.split(" ")
-        if len(my_arg) == 0:
+        if not arg:
             print("** class name missing **")
-        elif len(my_arg) == 1:
-            print("** instance id missing **")
         elif my_arg[0] not in my_class:
             print("** class doesn't exist **")
-        elif len(my_arg) >= 2:
-            my_objects = FileStorage.all(self)
-            my_key = my_arg[0] + "." + my_arg[1]
+        elif len(my_arg) >= 1:
             try:
-                my_objects.pop(my_key)
-                storage.save()
-            except KeyError:
-                print("** no instance found **")
+                my_objects = FileStorage.all(self)
+                my_key = my_arg[0] + "." + my_arg[1]
+                try:
+                    my_objects.pop(my_key)
+                    storage.save()
+                except KeyError:
+                    print("** no instance found **")
+            except IndexError:
+                print("** instance id missing **")
 
     def do_update(self, arg):
-        ''
+        """Updates an instance based on the class name and id by adding
+        or updating attribute (save the change into the JSON file)."""
         args = shlex.split(arg)
         if len(arg) == 0:
             print("** class name missing **")
