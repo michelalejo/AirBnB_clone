@@ -14,14 +14,18 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
+    def __init__(self):
+        """ Init """
+        pass
+
     def all(self):
         """returns the dictionary __objects"""
         return FileStorage.__objects
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        FileStorage.__objects["{}.{}"
-                              .format(obj.__class__.__name__, obj.id)] = obj
+        FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
+                                             obj.id)] = obj
 
     def save(self):
         dict = {}
@@ -37,16 +41,16 @@ class FileStorage:
         (only if the JSON file (__file_path) exists ;
         otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)"""
-        dict = {"BaseModel": BaseModel, "User": User, "Place": Place,
-                'Review': Review, 'Amenity': Amenity, 'State': State,
-                'City': City}
-        jsonFile = ""
+        dict = {"BaseModel": BaseModel, "User": User, "State": State,
+                "City": City, "Amenity": Amenity, "Place": Place,
+                "Review": Review}
+
+        json_file = ""
         try:
-            with open(FileStorage.__file_path, "r") as f:
-                jsonFile = json.loads(f.read())
-                for key in jsonFile:
-                    FileStorage.__objects[key] = dict[jsonFile[key]['__\
-                        class___']](
-                        **jsonFile[key])
-        except:
+            with open(FileStorage.__file_path, "r") as my_file:
+                json_file = json.loads(my_file.read())
+                for key in json_file:
+                    FileStorage.__objects[key] = dict[json_file[key]['__clas\
+s__']](**json_file[key])
+        except Exception:
             pass
