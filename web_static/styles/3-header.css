@@ -7,10 +7,9 @@ header
     position: absolute;
     border-bottom: 1px #CCCCCC;
 }
-header .log
+header .logo
 {
     background-image: url("../images/logo.png") no-repeat;
     left: 20px;
     height: 100%;
-    position: absolute;
 }
