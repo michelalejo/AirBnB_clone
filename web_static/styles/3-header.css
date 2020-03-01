@@ -9,7 +9,7 @@ header
 }
 header .log
 {
-    background-image: url("../images/logo.png")
+    background-image: url("../images/logo.png") no-repeat;
     left: 20px;
     height: 100%;
     position: absolute;
