@@ -1,18 +1,16 @@
-footer
-{
-    background-color: white;
+footer {
+    position: fixed;
+    background: white;
     height: 60px;
     width: 100%;
     bottom: 0;
+    border-top: 1px solid #cccccc;
+  }
+  footer p {
     position: absolute;
-    border-top: 1px solid #CCCCCC;
-}
-
-footer p
-{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    text-align: center;
+    top: 10%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
